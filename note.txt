@@ -1,0 +1,80 @@
+// ================== One Way Data Binding
+// ================== Interpolation
+<h1>Hello I am {{name}} and my age is {{age}}</h1>
+
+// -----------------
+
+export class HomeComponent{
+    name:string='Samantha B';
+    age:number = 52;
+    image="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR5ttx3aDX36AbEoMfWAgKQeUfO-ayS2hbWcDbFOnaRKTuejPW8";
+    width=400
+}
+
+// ================== Data Binding
+<input type="text" [value]="name" [placeholder]="age">
+
+<img [src]="{{image}}" alt="" [width]="width">
+
+// -----------------
+
+export class HomeComponent{
+    name:string='Samantha B';
+    age:number = 52;
+    image="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR5ttx3aDX36AbEoMfWAgKQeUfO-ayS2hbWcDbFOnaRKTuejPW8";
+    width=400
+}
+
+// ================== Event Binding
+
+<input type="text" #myVar (keyup)="setData(myVar.value)" placeholder="type here"> | 
+<button (click)="printData()">Print Data</button>
+
+<input type="text" #myVar (keyup.enter)="setData(myVar.value)" placeholder="type here">
+
+// -----------------
+
+export class HomeComponent{
+    data:string = '';
+    
+    setData(value:string){
+        this.data=value;
+    }
+
+    printData():void{
+        console.log(this.data);
+    }
+
+    setData(value:string){
+        console.log(value);
+    }
+}
+
+
+// ================== Interpolation and Event Binding
+
+<input type="text" #myElement (keyup)="name=myElement.value" placeholder="type here">
+<hr>
+My name is {{name}}
+
+// -----------------
+
+export class HomeComponent{
+    name:string = "";
+}
+
+// ================== Two Way Data Binding
+
+<input 
+type="text"
+ #myElement 
+ [(ngModel)]="name">
+<hr>
+My name is {{name}}
+
+// -----------------
+
+export class HomeComponent{
+    name:string = "";
+}
+
