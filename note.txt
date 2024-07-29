@@ -78,3 +78,30 @@ export class HomeComponent{
     name:string = "";
 }
 
+// ================== Navigate To Page
+
+<header>
+
+    <button (click)="navigateToPage('/home')" routerLinkActive="active">Home</button> |
+    <button (click)="navigateToPage('/customer')" routerLinkActive="active">Customer</button> |
+    <button (click)="navigateToPage('/order')" routerLinkActive="active">Order</button> |
+
+</header>
+
+<hr>
+
+<router-outlet></router-outlet>
+
+// -----------------
+
+constructor(private router:Router){}
+
+navigateToPage(link: string):void{
+  this.router.navigateByUrl(link)
+  .then(e=>{
+     console.log(e);
+  }).catch(error=>{
+     console.log(error);      
+  })
+}
+

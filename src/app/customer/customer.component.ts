@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-customer',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrl: './customer.component.scss'
 })
 export class CustomerComponent {
+
+  data:string | undefined;
+
+  constructor(private activatedRoute:ActivatedRoute) {}
+
+  ngOnInit(): void{
+    // this.data = this.activatedRoute.snapshot.paramMap.get('data')!;
+
+    this.activatedRoute.paramMap.subscribe(response=>{
+      this.data=response.get('data')!;
+    });
+  }
 
 }
